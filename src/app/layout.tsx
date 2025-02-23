@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { QueryProvider } from "../../providers/query-provider";
+import { SheetProvider } from "../../providers/sheet-provider";
+import { Toaster } from "@/components/ui/toaster";
+import UserMenu from "@/components/user-menu";
+import TopNav from "@/components/top-nav";
+import SearchForm from "@/components/search-form";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +33,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <QueryProvider>
+          <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+            <SheetProvider />
+            <Toaster />
+            <TopNav />
+
+            <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+              <SearchForm />
+              <UserMenu />
+            </div>
+          </header>
+          <div className="flex min-h-screen w-full flex-col">{children}</div>
+        </QueryProvider>
       </body>
     </html>
   );
