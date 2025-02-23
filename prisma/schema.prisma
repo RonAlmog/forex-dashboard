@@ -12,3 +12,19 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Transaction {
+  id              String   @id @default(cuid())
+  date            DateTime @default(now())
+  customerName    String?
+  amount          Int      @default(0)
+  currency        String?
+  convertedAmount Int?
+  salesRep        String?
+  region          String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("transactions")
+}
