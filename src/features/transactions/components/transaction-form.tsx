@@ -17,6 +17,8 @@ import { Button } from "@/components/ui/button";
 // import Select from "@/components/select";
 import DatePicker from "@/components/date-picker";
 import { transactionSchema } from "@/lib/schemas";
+import CurrencyInput from "@/components/currency-input";
+import { convertAmountToMiliunits } from "@/lib/utils";
 
 // const apiSchema = insertTransactionSchema.omit({ id: true });
 type FormValues = z.input<typeof transactionSchema>;
@@ -43,7 +45,7 @@ const TransactionForm = ({
   });
 
   const handleSubmit = (values: FormValues) => {
-    onSubmit({ ...values });
+    onSubmit({ ...values, amount: convertAmountToMiliunits(values.amount) });
   };
 
   const handleDelete = () => {
@@ -90,16 +92,17 @@ const TransactionForm = ({
         <FormField
           name="amount"
           control={form.control}
-          render={({ field }) => (
+          render={({ field: { value, onChange } }) => (
             <FormItem>
               <FormLabel>Amount</FormLabel>
               <FormControl>
-                <Input
+                {/* <Input
                   id="amount"
                   type="number"
                   placeholder="Enter amount"
                   {...field}
-                />
+                /> */}
+                <CurrencyInput value={value} onValueChange={onChange} />
               </FormControl>
               <FormMessage />
             </FormItem>
