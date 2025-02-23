@@ -10,9 +10,8 @@ import {
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
 
 import { useConfirm } from "@/hooks/use-confirm";
-
-import { useOpenTransaction } from "@/hooks/use-open-transaction";
-import { useDeleteTransaction } from "@/hooks/use-delete-transaction";
+import { useOpenTransaction } from "../hooks/use-open-transaction";
+import { useDeleteTransaction } from "../hooks/use-delete-transaction";
 
 type Props = { id: string };
 
