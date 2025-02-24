@@ -15,5 +15,16 @@ export const transactionSchema = z.object({
   salesRep: optionalString,
   region: optionalString,
 });
-
 export type TransactionValues = z.infer<typeof transactionSchema>;
+
+export const salesRepSchema = z.object({
+  id: z.string(),
+  name: optionalString,
+});
+export type SalesRepValues = z.infer<typeof salesRepSchema>;
+
+export const regionSchema = z.object({
+  id: z.string(),
+  name: optionalString,
+});
+export type RegionValues = z.infer<typeof regionSchema>;
