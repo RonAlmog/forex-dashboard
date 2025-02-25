@@ -1,5 +1,6 @@
 "use client";
 
+import NewRegionSheet from "@/features/regions/components/new-region-sheet";
 import EditTransactionSheet from "@/features/transactions/components/edit-transaction-sheet";
 import NewTransactionSheet from "@/features/transactions/components/new-transaction-sheet";
 import { useMountedState } from "react-use";
@@ -12,6 +13,7 @@ export const SheetProvider = () => {
     <>
       <NewTransactionSheet />
       <EditTransactionSheet />
+      <NewRegionSheet />
     </>
   );
 };
