@@ -6,12 +6,13 @@ const delRegion = async (id: string) => {
   return response.data;
 };
 
-export const useDeleteRegion = () => {
+export const useDeleteRegion = (id: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: delRegion,
-    onSuccess: () => {
+    mutationFn: async () => await delRegion(id),
+    onSuccess: (_, id) => {
+      queryClient.invalidateQueries({ queryKey: ["region", id] });
       queryClient.invalidateQueries({ queryKey: ["regions"] });
     },
     onError: (error) => {
