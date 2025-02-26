@@ -15,8 +15,7 @@ import { useOpenRegion } from "../hooks/use-open-region";
 type Props = { id: string };
 
 const Actions = ({ id }: Props) => {
-  console.log({ id });
-  const deleteMutation = useDeleteRegion();
+  const deleteMutation = useDeleteRegion(id);
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
     "You are about to delete this transaction"
