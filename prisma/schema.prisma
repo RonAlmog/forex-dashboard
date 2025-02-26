@@ -30,15 +30,15 @@ model Transaction {
 }
 
 model SalesRep {
-  id   String  @id @default(cuid())
-  name String?
+  id   String @id @default(cuid())
+  name String
 
   @@map("salesreps")
 }
 
 model Region {
-  id   String  @id @default(cuid())
-  name String?
+  id   String @id @default(cuid())
+  name String
 
   @@map("regions")
 }
