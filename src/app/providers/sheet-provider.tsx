@@ -1,5 +1,6 @@
 "use client";
 
+import EditRegionSheet from "@/features/regions/components/edit-region-sheet";
 import NewRegionSheet from "@/features/regions/components/new-region-sheet";
 import EditTransactionSheet from "@/features/transactions/components/edit-transaction-sheet";
 import NewTransactionSheet from "@/features/transactions/components/new-transaction-sheet";
@@ -14,6 +15,7 @@ export const SheetProvider = () => {
       <NewTransactionSheet />
       <EditTransactionSheet />
       <NewRegionSheet />
+      <EditRegionSheet />
     </>
   );
 };
