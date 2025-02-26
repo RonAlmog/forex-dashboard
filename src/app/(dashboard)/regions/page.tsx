@@ -7,10 +7,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, Plus } from "lucide-react";
 import { DataTable } from "@/components/data-table";
 import { columns } from "@/features/regions/components/columns";
+import { useDeleteRegions } from "@/features/regions/hooks/use-delete-regions";
 
 export default function Home() {
   const newRegion = useNewRegion();
-  const { data: regions, error, isLoading } = useGetRegions();
+  const { data: regions, isLoading } = useGetRegions();
+  const deleteRegions = useDeleteRegions();
 
   return (
     <main>
@@ -32,7 +34,7 @@ export default function Home() {
             </div>
           </CardHeader>
           <CardContent>
-            {isLoading ? (
+            {isLoading || !regions ? (
               <div className="h-10 w-full flex items-center justify-center">
                 <Loader2 className="size-8 text-slate-300 animate-spin" />
               </div>
@@ -43,8 +45,7 @@ export default function Home() {
                 filterKey="name"
                 onDelete={(row) => {
                   const ids = row.map((r) => r.original.id);
-
-                  // deleteTransactions.mutate({ ids });
+                  deleteRegions.mutate({ ids });
                   return null;
                 }}
                 disabled={false}
