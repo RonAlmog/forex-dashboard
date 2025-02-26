@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { QueryProvider } from "../../providers/query-provider";
-import { SheetProvider } from "../../providers/sheet-provider";
+import { QueryProvider } from "./providers/query-provider";
+import { SheetProvider } from "./providers/sheet-provider";
 import { Toaster } from "@/components/ui/toaster";
 import UserMenu from "@/components/user-menu";
 import TopNav from "@/components/top-nav";
@@ -44,7 +44,9 @@ export default function RootLayout({
               <UserMenu />
             </div>
           </header>
-          <div className="flex min-h-screen w-full flex-col">{children}</div>
+          <div className="flex min-h-screen max-w-[1500px] mx-auto flex-col">
+            {children}
+          </div>
         </QueryProvider>
       </body>
     </html>

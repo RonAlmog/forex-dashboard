@@ -18,10 +18,10 @@ export default function TopNav() {
         Transactions
       </Link>
       <Link
-        href="/"
+        href="/regions"
         className="text-muted-foreground transition-colors hover:text-foreground"
       >
-        Orders
+        Regions
       </Link>
       <Link
         href="/"
