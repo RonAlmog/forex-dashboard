@@ -9,7 +9,8 @@ export const useEditRegion = () => {
     mutationFn: async (values: RegionValues) => {
       return editRegion(values);
     },
-    onSuccess: () => {
+    onSuccess: (_, values) => {
+      queryClient.invalidateQueries({ queryKey: ["region", values.id] });
       queryClient.invalidateQueries({ queryKey: ["regions"] });
     },
     onError: (error) => {
