@@ -1,5 +1,5 @@
 import { z } from "zod";
-const optionalString = z.string().trim().optional().or(z.literal(""));
+// const optionalString = z.string().trim().optional().or(z.literal(""));
 const goodString = z
   .string()
   .nonempty("Name is required")

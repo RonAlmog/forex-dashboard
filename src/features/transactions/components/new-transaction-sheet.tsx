@@ -17,7 +17,7 @@ import { useCreateTransaction } from "../hooks/use-create-transaction";
 type FormValues = z.input<typeof transactionSchema>;
 
 const NewTransactionSheet = () => {
-  const { isOpen, onOpen, onClose } = useNewTransaction();
+  const { isOpen, onClose } = useNewTransaction();
   const createMutation = useCreateTransaction();
 
   const isPending = createMutation.isPending;

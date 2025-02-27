@@ -19,7 +19,7 @@ import { useDeleteRegion } from "../hooks/use-delete-region";
 type FormValues = z.input<typeof regionSchema>;
 
 const EditRegionSheet = () => {
-  const { isOpen, onOpen, onClose, id } = useOpenRegion();
+  const { isOpen, onClose, id } = useOpenRegion();
   console.log({ id });
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",

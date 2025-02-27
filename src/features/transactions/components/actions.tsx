@@ -16,8 +16,7 @@ import { useDeleteTransaction } from "../hooks/use-delete-transaction";
 type Props = { id: string };
 
 const Actions = ({ id }: Props) => {
-  console.log({ id });
-  const deleteMutation = useDeleteTransaction();
+  const deleteMutation = useDeleteTransaction(id);
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
     "You are about to delete this transaction"

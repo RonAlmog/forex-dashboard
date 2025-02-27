@@ -13,6 +13,7 @@ import Actions from "./actions";
 export const columns: ColumnDef<TransactionValues>[] = [
   {
     id: "select",
+    size: 30,
     header: ({ table }) => (
       <Checkbox
         checked={
@@ -159,6 +160,7 @@ export const columns: ColumnDef<TransactionValues>[] = [
   },
   {
     id: "actions",
+    size: 80,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     header: ({ column }) => {
       return <Button variant="ghost">Actions</Button>;

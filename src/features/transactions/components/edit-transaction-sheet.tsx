@@ -21,7 +21,7 @@ import { useDeleteTransaction } from "../hooks/use-delete-transaction";
 type FormValues = z.input<typeof transactionSchema>;
 
 const EditTransactionSheet = () => {
-  const { isOpen, onOpen, onClose, id } = useOpenTransaction();
+  const { isOpen, onClose, id } = useOpenTransaction();
   console.log({ id });
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
@@ -31,7 +31,7 @@ const EditTransactionSheet = () => {
   const transactionQuery = useGetTransaction(id!);
 
   const editMutation = useEditTransaction();
-  const deleteMutation = useDeleteTransaction();
+  const deleteMutation = useDeleteTransaction(id!);
 
   const isPending =
     transactionQuery.isPending ||
@@ -58,21 +58,13 @@ const EditTransactionSheet = () => {
           ? new Date(transactionQuery.data.date)
           : new Date(),
         customerName: transactionQuery.data.customerName,
-        amount: transactionQuery.data.amount.toString(),
+        amount: transactionQuery.data.amount,
         currency: transactionQuery.data.currency,
         convertedAmount: transactionQuery.data.convertedAmount,
         salesRep: transactionQuery.data.salesRep,
         region: transactionQuery.data.region,
       }
-    : {
-        date: new Date(),
-        customerName: "",
-        amount: "",
-        currency: "",
-        convertedAmount: "",
-        salesRep: "",
-        region: "",
-      };
+    : undefined;
 
   const onDelete = async () => {
     const ok = await confirm();
