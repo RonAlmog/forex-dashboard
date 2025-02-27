@@ -13,11 +13,12 @@ import Card4 from "@/features/transactions/components/card4";
 import { columns } from "@/features/transactions/components/columns";
 import { useGetTransactions } from "@/features/transactions/hooks/use-get-transactions";
 import { useNewTransaction } from "@/features/transactions/hooks/use-new-transaction";
+import { useDeleteTransactions } from "@/features/transactions/hooks/use-delete-transactions";
 
 export default function Home() {
   const newTransaction = useNewTransaction();
-  const { data: transactions, error, isLoading } = useGetTransactions();
-
+  const { data: transactions, isLoading } = useGetTransactions();
+  const deleteTransactions = useDeleteTransactions();
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
@@ -44,7 +45,7 @@ export default function Home() {
             </div>
           </CardHeader>
           <CardContent>
-            {isLoading ? (
+            {isLoading || !transactions ? (
               <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
                 <Card className="border-none drop-shadow-sm">
                   <CardContent>
@@ -61,8 +62,7 @@ export default function Home() {
                 filterKey="customerName"
                 onDelete={(row) => {
                   const ids = row.map((r) => r.original.id);
-
-                  // deleteTransactions.mutate({ ids });
+                  deleteTransactions.mutate({ ids });
                   return null;
                 }}
                 disabled={false}

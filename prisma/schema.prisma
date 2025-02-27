@@ -16,11 +16,11 @@ datasource db {
 model Transaction {
   id              String   @id @default(cuid())
   date            DateTime @default(now())
-  customerName    String?
+  customerName    String
   amount          Int      @default(0)
-  currency        String?
-  convertedAmount Int?
-  salesRep        String?
+  currency        String
+  convertedAmount Int      @default(0)
+  salesRep        String
   region          String
 
   createdAt DateTime @default(now())
