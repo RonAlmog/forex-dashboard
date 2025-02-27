@@ -16,7 +16,7 @@ import { regionSchema } from "@/lib/schemas";
 type FormValues = z.input<typeof regionSchema>;
 
 const NewRegionSheet = () => {
-  const { isOpen, onOpen, onClose } = useNewRegion();
+  const { isOpen, onClose } = useNewRegion();
   const createMutation = useCreateRegion();
 
   const isPending = createMutation.isPending;

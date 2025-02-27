@@ -24,22 +24,10 @@ export default function TopNav() {
         Regions
       </Link>
       <Link
-        href="/"
-        className="text-muted-foreground transition-colors hover:text-foreground"
+        href="/salesreps"
+        className="w-20 text-muted-foreground transition-colors hover:text-foreground"
       >
-        Products
-      </Link>
-      <Link
-        href="/"
-        className="text-muted-foreground transition-colors hover:text-foreground"
-      >
-        Customers
-      </Link>
-      <Link
-        href="#"
-        className="text-muted-foreground transition-colors hover:text-foreground"
-      >
-        Analytics
+        Sales Reps
       </Link>
     </nav>
   );
