@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Loader2, Plus } from "lucide-react";
 
-import { DataTable } from "@/features/transactions/components/data-table";
+import { DataTable } from "@/components/data-table";
 import Card1 from "@/features/transactions/components/card1";
 import Card2 from "@/features/transactions/components/card2";
 import Card3 from "@/features/transactions/components/card3";
