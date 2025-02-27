@@ -33,6 +33,7 @@ export const columns: ColumnDef<RegionValues>[] = [
 
   {
     accessorKey: "name",
+    size: 1000,
     header: ({ column }) => {
       return (
         <Button
@@ -48,8 +49,8 @@ export const columns: ColumnDef<RegionValues>[] = [
 
   {
     id: "actions",
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    header: ({ column }) => {
+    size: 100,
+    header: () => {
       return <Button variant="ghost">Actions</Button>;
     },
     cell: ({ row }) => <Actions id={row.original.id} />,

@@ -1,17 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteSalesRep } from "../actions/delete-salesrep";
 
-const delSalesRep = async (id: string) => {
-  const response = await deleteSalesRep(id);
-  return response.data;
-};
-
-export const useDeleteSalesRep = () => {
+export const useDeleteSalesRep = (id: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: delSalesRep,
+    mutationFn: () => deleteSalesRep(id).then((response) => response.data),
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["salesrep", id] });
       queryClient.invalidateQueries({ queryKey: ["salesreps"] });
     },
     onError: (error) => {

@@ -7,7 +7,7 @@ type OpenSalesRepState = {
   onClose: () => void;
 };
 
-export const useOpenRegion = create<OpenSalesRepState>((set) => ({
+export const useOpenSalesRep = create<OpenSalesRepState>((set) => ({
   id: undefined,
   isOpen: false,
   onOpen: (id: string) => set({ isOpen: true, id }),
