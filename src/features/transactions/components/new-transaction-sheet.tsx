@@ -11,8 +11,8 @@ import { z } from "zod";
 
 import TransactionForm from "./transaction-form";
 import { Loader2 } from "lucide-react";
-import { useNewTransaction } from "@/hooks/use-new-transaction";
-import { useCreateTransaction } from "@/hooks/use-create-transaction";
+import { useNewTransaction } from "../hooks/use-new-transaction";
+import { useCreateTransaction } from "../hooks/use-create-transaction";
 
 type FormValues = z.input<typeof transactionSchema>;
 

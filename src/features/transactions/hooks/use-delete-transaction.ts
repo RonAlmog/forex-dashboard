@@ -1,5 +1,5 @@
-import { deleteTransaction } from "@/app/actions/delete-transaction";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteTransaction } from "../actions/delete-transaction";
 
 const deleteTran = async (id: string) => {
   const response = await deleteTransaction(id);

@@ -1,5 +1,5 @@
-import { getTransaction } from "@/app/actions/get-transaction";
 import { useQuery } from "@tanstack/react-query";
+import { getTransaction } from "../actions/get-transaction";
 
 export const useGetTransaction = (id: string) => {
   return useQuery({

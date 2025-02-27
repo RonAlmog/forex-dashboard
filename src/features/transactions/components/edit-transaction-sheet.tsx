@@ -13,10 +13,10 @@ import { useConfirm } from "@/hooks/use-confirm";
 
 import TransactionForm from "./transaction-form";
 import { transactionSchema } from "@/lib/schemas";
-import { useOpenTransaction } from "@/hooks/use-open-transaction";
-import { useDeleteTransaction } from "@/hooks/use-delete-transaction";
-import { useGetTransaction } from "@/hooks/use-get-transaction";
-import { useEditTransaction } from "@/hooks/use-edit-transaction";
+import { useOpenTransaction } from "../hooks/use-open-transaction";
+import { useGetTransaction } from "../hooks/use-get-transaction";
+import { useEditTransaction } from "../hooks/use-edit-transaction";
+import { useDeleteTransaction } from "../hooks/use-delete-transaction";
 
 type FormValues = z.input<typeof transactionSchema>;
 
