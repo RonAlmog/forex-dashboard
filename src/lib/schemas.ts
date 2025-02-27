@@ -15,10 +15,10 @@ export const transactionSchema = z.object({
     .min(2, "Must be at least 2 characters")
     .max(20, "Must be at most 20 characters"),
   amount: z.coerce.number(),
-  currency: optionalString,
-  convertedAmount: z.number().optional(),
-  salesRep: optionalString,
-  region: optionalString,
+  currency: goodString,
+  convertedAmount: z.number(),
+  salesRep: goodString,
+  region: goodString,
 });
 export type TransactionValues = z.infer<typeof transactionSchema>;
 
