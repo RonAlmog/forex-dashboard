@@ -9,11 +9,13 @@ import { useGetSalesReps } from "@/features/sales-reps/hooks/use-get-salesreps";
 import { useNewSalesRep } from "@/features/sales-reps/hooks/use-new-salesrep";
 import { columns } from "@/features/sales-reps/components/columns";
 import { useDeleteSalesReps } from "@/features/sales-reps/hooks/use-delete-salesreps";
+import { useFlags } from "launchdarkly-react-client-sdk";
 
 export default function Home() {
   const newSalesRep = useNewSalesRep();
   const { data: salesReps, isLoading } = useGetSalesReps();
   const deleteSalesReps = useDeleteSalesReps();
+  const { allowNew } = useFlags();
 
   return (
     <main>
@@ -22,14 +24,16 @@ export default function Home() {
           <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg: justify-between">
             <CardTitle className="text-xl line-clamp-1">Sales Reps</CardTitle>
             <div className="flex flex-col lg:flex-row items-center gap-x-2 gap-y-2">
-              <Button
-                size="sm"
-                className="w-full lg:w-auto"
-                onClick={newSalesRep.onOpen}
-              >
-                <Plus className="size-4 mr-2" />
-                Add New
-              </Button>
+              {allowNew && (
+                <Button
+                  size="sm"
+                  className="w-full lg:w-auto"
+                  onClick={newSalesRep.onOpen}
+                >
+                  <Plus className="size-4 mr-2" />
+                  Add New
+                </Button>
+              )}
             </div>
           </CardHeader>
           <CardContent>
