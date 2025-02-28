@@ -8,6 +8,8 @@ import UserMenu from "@/components/user-menu";
 import TopNav from "@/components/top-nav";
 import SearchForm from "@/components/search-form";
 import { LDProvider } from "launchdarkly-react-client-sdk";
+import "dotenv/config";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -41,7 +43,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LDProvider clientSideID="67c0d10afd2ac409e3384ec3" context={ldContext}>
+        <LDProvider
+          clientSideID={process.env.NEXT_PUBLIC_LD_CLIENT_SIDE_ID!}
+          context={ldContext}
+        >
           <QueryProvider>
             <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
               <SheetProvider />
