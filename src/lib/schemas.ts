@@ -4,7 +4,7 @@ const goodString = z
   .string()
   .nonempty("Name is required")
   .min(2, "Must be at least 2 characters")
-  .max(20, "Must be at most 20 characters");
+  .max(40, "Must be at most 40 characters");
 
 export const transactionSchema = z.object({
   id: z.string(),
@@ -13,12 +13,12 @@ export const transactionSchema = z.object({
     .string()
     .nonempty("Name is required")
     .min(2, "Must be at least 2 characters")
-    .max(20, "Must be at most 20 characters"),
+    .max(40, "Must be at most 40 characters"),
   amount: z.coerce.number(),
   currency: goodString,
   convertedAmount: z.number(),
-  salesRep: goodString,
-  region: goodString,
+  salesRepId: goodString,
+  regionId: goodString,
 });
 export type TransactionValues = z.infer<typeof transactionSchema>;
 
