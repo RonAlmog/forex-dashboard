@@ -4,7 +4,7 @@ import NavButton from "./nav-button";
 
 const routes = [
   {
-    href: "/transactions",
+    href: "/",
     label: "Transactions",
   },
   {
