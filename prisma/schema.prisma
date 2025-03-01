@@ -20,8 +20,12 @@ model Transaction {
   amount          Int      @default(0)
   currency        String
   convertedAmount Int      @default(0)
-  salesRep        String
-  region          String
+
+  salesRep   SalesRep @relation(fields: [salesRepId], references: [id])
+  salesRepId String
+
+  region   Region @relation(fields: [regionId], references: [id])
+  regionId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -30,15 +34,17 @@ model Transaction {
 }
 
 model SalesRep {
-  id   String @id @default(cuid())
-  name String
+  id           String        @id @default(cuid())
+  name         String
+  transactions Transaction[]
 
   @@map("salesreps")
 }
 
 model Region {
-  id   String @id @default(cuid())
-  name String
+  id           String        @id @default(cuid())
+  name         String
+  transactions Transaction[]
 
   @@map("regions")
 }
