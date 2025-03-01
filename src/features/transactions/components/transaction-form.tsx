@@ -19,6 +19,7 @@ import DatePicker from "@/components/date-picker";
 import { transactionSchema } from "@/lib/schemas";
 import CurrencyInput from "@/components/currency-input";
 import { convertAmountToMiliunits } from "@/lib/utils";
+import Select from "@/components/select";
 
 // const apiSchema = insertTransactionSchema.omit({ id: true });
 type FormValues = z.input<typeof transactionSchema>;
@@ -30,6 +31,10 @@ type Props = {
   onSubmit: (values: ApiFormValues) => void;
   onDelete?: () => void;
   disabled?: boolean;
+  salesReps: { value: string; label: string }[];
+  onCreateSalesRep: (value: string) => void;
+  regions: { value: string; label: string }[];
+  onCreateRegion: (value: string) => void;
 };
 
 const TransactionForm = ({
@@ -38,6 +43,10 @@ const TransactionForm = ({
   onSubmit,
   onDelete,
   disabled,
+  salesReps,
+  onCreateSalesRep,
+  regions,
+  onCreateRegion,
 }: Props) => {
   const form = useForm<FormValues>({
     resolver: zodResolver(transactionSchema),
@@ -96,12 +105,6 @@ const TransactionForm = ({
             <FormItem>
               <FormLabel>Amount</FormLabel>
               <FormControl>
-                {/* <Input
-                  id="amount"
-                  type="number"
-                  placeholder="Enter amount"
-                  {...field}
-                /> */}
                 <CurrencyInput value={value} onValueChange={onChange} />
               </FormControl>
               <FormMessage />
@@ -128,27 +131,41 @@ const TransactionForm = ({
         />
 
         <FormField
-          name="salesRep"
+          name="salesRepId"
           control={form.control}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Sales Rep</FormLabel>
               <FormControl>
-                <Input placeholder="John doe" disabled={disabled} {...field} />
+                <Select
+                  options={salesReps}
+                  value={field.value}
+                  onChange={field.onChange}
+                  onCreate={onCreateSalesRep}
+                  disabled={disabled}
+                />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
 
         <FormField
-          name="region"
+          name="regionId"
           control={form.control}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Region</FormLabel>
               <FormControl>
-                <Input placeholder="east" disabled={disabled} {...field} />
+                <Select
+                  options={regions}
+                  value={field.value}
+                  onChange={field.onChange}
+                  onCreate={onCreateRegion}
+                  disabled={disabled}
+                />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />

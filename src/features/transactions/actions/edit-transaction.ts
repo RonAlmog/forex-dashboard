@@ -13,8 +13,8 @@ export async function editTransaction(values: TransactionValues) {
       amount: values.amount,
       convertedAmount: values.convertedAmount,
       currency: values.currency,
-      salesRep: values.salesRep,
-      region: values.region!,
+      salesRepId: values.salesRepId,
+      regionId: values.regionId,
     },
     where: {
       id: values.id,
