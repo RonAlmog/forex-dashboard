@@ -32,7 +32,6 @@ const NewTransactionSheet = () => {
     label: salesRep.name,
   }));
   const salesRepMutation = useCreateSalesRep();
-  console.log({ salesReps });
 
   // regions
   const regionsQuery = useGetRegions();
@@ -41,11 +40,10 @@ const NewTransactionSheet = () => {
     label: region.name,
   }));
   const regionMutation = useCreateRegion();
-  console.log({ regions });
+
   const isLoading = regionsQuery.isLoading || salesRepsQuery.isLoading;
 
   const onSubmit = (values: FormValues) => {
-    console.log({ values });
     createMutation.mutate(values, {
       onSuccess: () => {
         onClose();

@@ -24,7 +24,6 @@ const NewRegionSheet = () => {
   const isLoading = false; //  categoryQuery.isLoading || accountQuery.isLoading;
 
   const onSubmit = (values: FormValues) => {
-    console.log({ values });
     createMutation.mutate(values, {
       onSuccess: () => {
         onClose();

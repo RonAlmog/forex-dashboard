@@ -20,7 +20,6 @@ type FormValues = z.input<typeof regionSchema>;
 
 const EditRegionSheet = () => {
   const { isOpen, onClose, id } = useOpenRegion();
-  console.log({ id });
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
     "You are about to delete this region"

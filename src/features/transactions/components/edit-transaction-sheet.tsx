@@ -26,7 +26,7 @@ type FormValues = z.input<typeof transactionSchema>;
 
 const EditTransactionSheet = () => {
   const { isOpen, onClose, id } = useOpenTransaction();
-  console.log({ id });
+
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
     "You are about to delete this transaction"
@@ -43,7 +43,6 @@ const EditTransactionSheet = () => {
     label: salesRep.name,
   }));
   const salesRepMutation = useCreateSalesRep();
-  console.log({ salesReps });
 
   // regions
   const regionsQuery = useGetRegions();
@@ -52,7 +51,7 @@ const EditTransactionSheet = () => {
     label: region.name,
   }));
   const regionMutation = useCreateRegion();
-  console.log({ regions });
+
   const isLoading =
     regionsQuery.isLoading ||
     salesRepsQuery.isLoading ||
@@ -70,9 +69,6 @@ const EditTransactionSheet = () => {
       },
     });
   };
-
-  const d = transactionQuery.data;
-  console.log(JSON.stringify(d));
 
   const defaultValues = transactionQuery.data
     ? {
