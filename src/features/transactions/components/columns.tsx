@@ -79,16 +79,10 @@ export const columns: ColumnDef<TransactionValues>[] = [
         </Button>
       );
     },
+
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("amount"));
-      return (
-        <Badge
-          variant={amount < 0 ? "destructive" : "primary"}
-          className="text-xs font-medium px-3.5 py-2.5"
-        >
-          <span>{formatCurrency(amount)}</span>
-        </Badge>
-      );
+      return <div className="text-right lg:mr-5">{formatCurrency(amount)}</div>;
     },
   },
   {
@@ -103,6 +97,10 @@ export const columns: ColumnDef<TransactionValues>[] = [
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
+    },
+    cell: ({ row }) => {
+      const currency = row.getValue("currency");
+      return <div className="text-center">{currency}</div>;
     },
   },
   {
@@ -121,12 +119,9 @@ export const columns: ColumnDef<TransactionValues>[] = [
     cell: ({ row }) => {
       const convertedAmount = parseFloat(row.getValue("convertedAmount"));
       return (
-        <Badge
-          variant={convertedAmount < 0 ? "destructive" : "primary"}
-          className="text-xs font-medium px-3.5 py-2.5"
-        >
-          <span>{formatCurrency(convertedAmount)}</span>
-        </Badge>
+        <div className="text-right lg:mr-5">
+          {formatCurrency(convertedAmount)}
+        </div>
       );
     },
   },
