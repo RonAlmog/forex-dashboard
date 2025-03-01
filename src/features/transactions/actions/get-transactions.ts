@@ -7,10 +7,16 @@ export async function getTransactions() {
   try {
     const transactions = await prisma.transaction.findMany({
       orderBy: { createdAt: "desc" },
+      include: {
+        salesRep: true,
+        region: true,
+      },
     });
     // return transactions;
     return transactions.map((tran) => ({
       ...tran,
+      salesRep: tran.salesRep.name,
+      region: tran.region.name,
       amount: convertMiliunitsToAmount(tran.amount),
     }));
 

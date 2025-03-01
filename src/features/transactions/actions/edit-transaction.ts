@@ -5,7 +5,7 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
 export async function editTransaction(values: TransactionValues) {
-  console.log("hello action");
+  console.log("hello action", values);
   await prisma.transaction.update({
     data: {
       customerName: values.customerName,
