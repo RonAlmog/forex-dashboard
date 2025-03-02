@@ -6,7 +6,6 @@ import { ArrowUpDown } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { TransactionValues } from "@/lib/schemas";
 import { format } from "date-fns";
-import { Badge } from "@/components/ui/badge";
 import { formatCurrency } from "@/lib/utils";
 import Actions from "./actions";
 
@@ -99,7 +98,7 @@ export const columns: ColumnDef<TransactionValues>[] = [
       );
     },
     cell: ({ row }) => {
-      const currency = row.getValue("currency");
+      const currency = row.getValue("currency") as string;
       return <div className="text-center">{currency}</div>;
     },
   },
