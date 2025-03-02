@@ -9,8 +9,12 @@ import { useGetSalesReps } from "@/features/sales-reps/hooks/use-get-salesreps";
 import { useNewSalesRep } from "@/features/sales-reps/hooks/use-new-salesrep";
 import { columns } from "@/features/sales-reps/components/columns";
 import { useDeleteSalesReps } from "@/features/sales-reps/hooks/use-delete-salesreps";
+import { Metadata } from "next";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Sales Reps",
+};
+export default function SalesReps() {
   const newSalesRep = useNewSalesRep();
   const { data: salesReps, isLoading } = useGetSalesReps();
   const deleteSalesReps = useDeleteSalesReps();

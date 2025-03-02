@@ -8,8 +8,13 @@ import { Loader2, Plus } from "lucide-react";
 import { DataTable } from "@/components/data-table";
 import { columns } from "@/features/regions/components/columns";
 import { useDeleteRegions } from "@/features/regions/hooks/use-delete-regions";
+import { Metadata } from "next";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Regions",
+};
+
+export default function Regions() {
   const newRegion = useNewRegion();
   const { data: regions, isLoading } = useGetRegions();
   const deleteRegions = useDeleteRegions();
