@@ -8,6 +8,8 @@ import UserMenu from "@/components/user-menu";
 import TopNav from "@/components/top-nav";
 import SearchForm from "@/components/search-form";
 import "dotenv/config";
+import ThemeToggle from "@/components/theme-toggle";
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,25 +32,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QueryProvider>
-          <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-            <SheetProvider />
-            <Toaster />
-            <TopNav />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <QueryProvider>
+            <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+              <SheetProvider />
+              <Toaster />
+              <TopNav />
 
-            <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-              <SearchForm />
-              <UserMenu />
+              <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+                <SearchForm />
+                <ThemeToggle />
+                <UserMenu />
+              </div>
+            </header>
+            <div className="flex min-h-screen max-w-[1500px] mx-auto flex-col">
+              {children}
             </div>
-          </header>
-          <div className="flex min-h-screen max-w-[1500px] mx-auto flex-col">
-            {children}
-          </div>
-        </QueryProvider>
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
